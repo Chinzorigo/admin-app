@@ -12,7 +12,6 @@ const columns = [
         dataIndex: "CreatedAt",
         key: "CreatedAt"
     },
-    
 
 ]
 
