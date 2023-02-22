@@ -1,10 +1,6 @@
-import React, {useState} from "react"
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-
-} from '@ant-design/icons';
-import { Layout } from 'antd';
+import React, { useState } from "react";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Layout } from "antd";
 
 import AppHeader from "./components/AppHeader/index";
 import SideMenu from "./components/SideMenu/index";
@@ -14,28 +10,26 @@ import "./App.css";
 
 const { Sider } = Layout;
 
-
-
-
-
-
-
 function App() {
   const [collapsed, setCollapsed] = useState(false);
-
 
   return (
     <div className="App">
       <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <SideMenu />
-          </Sider>
+        </Sider>
         <Layout className="site-layout">
-          <AppHeader         {...React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-          className: 'trigger',
-          onClick: () => setCollapsed(!collapsed),
-        })} />
+          <AppHeader
+            {...React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
+          />
           <PageContent />
           <AppFooter />
         </Layout>

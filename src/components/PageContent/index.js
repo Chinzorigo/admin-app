@@ -8,9 +8,9 @@ function PageContent() {
   } = theme.useToken();
 
   return (
-    <Content style={{ margin: "6px 6px 0 6px" }}>
+    <Content style={{ margin: "2px 0px 0px 0px" }}>
       <div
-        style={{ padding: 10, minHeight: 800, background: colorBgContainer }}
+        style={{ padding: 5, minHeight: 20, background: colorBgContainer }}
       >
         <AppRoutes />
       </div>
