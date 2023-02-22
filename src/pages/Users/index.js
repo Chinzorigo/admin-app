@@ -25,7 +25,7 @@ function Users() {
   const deleteUser = async (_id) => {
     try {
       await axios.delete(`http://localhost:8000/api/users/${_id}`);
-      console.log('User deleted successfully');
+    //   console.log('User deleted successfully');
       // Call getUsers() again to update the list of users
     
       getUsers();
