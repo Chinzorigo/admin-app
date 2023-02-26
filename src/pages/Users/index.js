@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-
 function Users() {
   const [user, setUser] = useState([]);
 //Get user list
@@ -35,46 +34,57 @@ function Users() {
   };
 
 
-
-
+// Column name
   const columns = [
     {
       title: "First Name",
-      width: 100,
+      width: '12.5%',
       dataIndex: "firstName",
       key: "1",
       fixed: "left",
+      
     },
     {
       title: "Last Name",
-      width: 100,
+      width: '12.5%',
       dataIndex: "lastName",
       key: "2",
       fixed: "left",
     },
     {
       title: "Email",
+      width: '17%',
       dataIndex: "email",
       key: "3",
     },
     {
-      title: "Gender",
-      dataIndex: "gender",
+      title: "Phone",
+      width: '8%',
+      dataIndex: "phone",
       key: "4",
     },
     {
-      title: "Address",
-      dataIndex: "address",
+      title: "Gender",
+      width: '6%',
+      dataIndex: "gender",
       key: "5",
     },
     {
-      title: "Created At",
-      dataIndex: "createdAt",
+      title: "Address",
+      width: '19%',
+      dataIndex: "address",
       key: "6",
     },
     {
-      title: "Үйлдэл",
-      key: "action",
+      title: "Created At",
+      width: '12.5%',
+      dataIndex: "createdAt",
+      key: "7",
+    },
+    {
+      title: "Action",
+      width: '12.5%',
+      key: "8",
       render: (_, record) => user.length >= 1 ? (
         <Space size="middle">
           <a href="#section">Update</a>
@@ -92,8 +102,9 @@ function Users() {
     <Table
       columns={columns}
       dataSource={user}
-      title={() => "User list"}
+      title={() => "User list - Only delete button works for now."}
       scroll={{ x: 600, y: 580 }}
+      bordered
     />
   );
 }

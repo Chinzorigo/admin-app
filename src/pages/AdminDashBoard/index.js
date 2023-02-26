@@ -2,7 +2,7 @@ import React from "react";
 
 function AdminDashBoard () {
     return (
-        <div>AdminDashBoard</div>
+        <div>AdminDashBoard - Working on it</div>
     )
 }
 
