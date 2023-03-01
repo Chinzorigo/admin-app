@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
+
 function Users() {
+  
   const [user, setUser] = useState([]);
 //Get user list
   const getUsers = async () => {
+    const API_URL = process.env.REACT_APP_API_URL
+    // console.log(API_URL);
     try {
-      const result = await axios.get(`http://localhost:8000/api/users`);
+      const result = await axios.get(`${API_URL}/users`);
       setUser(result.data.data);
     } catch (error) {
       console.log(error.message);
@@ -16,14 +20,17 @@ function Users() {
   };
 
   useEffect(() => {
+    
     getUsers();
+    
   }, []);
 
 
 // Delete user by Id
   const deleteUser = async (_id) => {
+    const API_URL = process.env.REACT_APP_API_URL
     try {
-      await axios.delete(`http://localhost:8000/api/users/${_id}`);
+      await axios.delete(`${API_URL}/users/${_id}`);
     //   console.log('User deleted successfully');
       // Call getUsers() again to update the list of users
     
