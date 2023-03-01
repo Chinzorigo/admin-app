@@ -55,35 +55,13 @@ function Products() {
     getProduct();
   }, []);
 
-    // Update product by Id
-    const updateProduct = async (_id, save) => {
-      try {
-        await axios.put(`http://localhost:8000/api/product/${_id}`, save);
-        console.log("Product updated successfully");
-        // Call () again to update the list of products
-        getProduct();
 
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
 
   const [form] = Form.useForm();
-  const [data1, setData1] = useState(product);
   const [editingKey, setEditingKey] = useState("");
   const isEditing = (record) => record._id === editingKey;
   const edit = (record) => {
     form.setFieldsValue({
-      title: "",
-      description: "",
-      price: "",
-      discountPercentage: "",
-      rating: "",
-      stock: "",
-      brand: "",
-      category: "",
-      thumbnail: "",
-      images: [""],
       ...record,
     });
     setEditingKey(record._id);
@@ -94,21 +72,14 @@ function Products() {
   const save = async (_id) => {
     try {
       const row = await form.validateFields();
-      const newData = [...data1];
-      const index = newData.findIndex((item) => _id === item._id);
-      if (index > -1) {
-        const item = newData[index];
-        newData.splice(index, 1, {
-          ...item,
-          ...row,
-        });
-        setData1(newData);
-        setEditingKey("");
-      } else {
-        newData.push(row);
-        setData1(newData);
-        setEditingKey("");
-      }
+      const response = await axios.put(
+        `http://localhost:8000/api/product/${_id}`,
+        row
+      );
+
+      console.log("Product updated successfully", response.data);
+      setEditingKey("");
+      getProduct();
       
     } catch (errInfo) {
       console.log("Validate Failed:", errInfo);
@@ -235,13 +206,6 @@ function Products() {
   });
 
   return (
-    // <Table
-    //     columns={columns}
-    //     dataSource={user}
-    //     title={() => "Product list - Only edit button works for now."}
-    //     scroll={{ x: 600, y: 580}}
-    //     bordered
-    // />
 
     <Form form={form} component={false}>
       <Table
