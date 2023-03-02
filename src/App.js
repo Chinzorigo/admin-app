@@ -10,6 +10,8 @@ import "./App.css";
 
 const { Sider } = Layout;
 
+export const URL = process.env.REACT_APP_API_URL;
+
 function App() {
   const [collapsed, setCollapsed] = useState(false);
 
