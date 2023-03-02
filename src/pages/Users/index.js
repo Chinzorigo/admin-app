@@ -12,7 +12,7 @@ function Users() {
     const API_URL = process.env.REACT_APP_API_URL
     // console.log(API_URL);
     try {
-      const result = await axios.get(`${API_URL}/users`);
+      const result = await axios.get(`${API_URL}/api/users`);
       setUser(result.data.data);
     } catch (error) {
       console.log(error.message);
@@ -30,7 +30,7 @@ function Users() {
   const deleteUser = async (_id) => {
     const API_URL = process.env.REACT_APP_API_URL
     try {
-      await axios.delete(`${API_URL}/users/${_id}`);
+      await axios.delete(`${API_URL}/api/users/${_id}`);
     //   console.log('User deleted successfully');
       // Call getUsers() again to update the list of users
     
